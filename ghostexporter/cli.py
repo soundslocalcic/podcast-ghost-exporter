@@ -16,40 +16,30 @@ It can be used as a handy facility for running the task from a command line.
 .. moduleauthor:: Mark Steadman <mark@soundslocal.co.uk>
 """
 
-
-from . import __version__
-import logging
+from .models import Feed
 import click
+import logging
+import sys
+
 
 LOGGING_LEVELS = {
     0: logging.NOTSET,
     1: logging.ERROR,
     2: logging.WARN,
     3: logging.INFO,
-    4: logging.DEBUG,
+    4: logging.DEBUG
 }  #: a mapping of `verbose` option counts to logging levels
 
 
-class Info(object):
-    """An information object to pass data between CLI functions."""
-
-    def __init__(self):  # Note: This object must have an empty constructor.
-        """Create a new instance."""
-        self.verbose: int = 0
+DEFAULT_VERSION = "5"
 
 
-# pass_info is a decorator for functions that pass 'Info' objects.
-#: pylint: disable=invalid-name
-pass_info = click.make_pass_decorator(Info, ensure=True)
-
-
-# Change the options to below to suit the actual options for your task (or
-# tasks).
-@click.group()
+@click.command()
+@click.argument("url")
+@click.option("--version", default=DEFAULT_VERSION, help="Document version number.")  # noqa
 @click.option("--verbose", "-v", count=True, help="Enable verbose output.")
-@pass_info
-def cli(info: Info, verbose: int):
-    """Run ghostexporter."""
+def cli(url: str, version: str = DEFAULT_VERSION, verbose: int = 0):
+    """Convert a podcast RSS feed into a Ghost JSON document."""
     # Use the verbosity count to determine the logging level
     if verbose > 0:
         logging.basicConfig(
@@ -57,6 +47,7 @@ def cli(info: Info, verbose: int):
             if verbose in LOGGING_LEVELS
             else logging.DEBUG
         )
+
         click.echo(
             click.style(
                 f"Verbose logging is enabled. "
@@ -65,10 +56,6 @@ def cli(info: Info, verbose: int):
             )
         )
 
-    info.verbose = verbose
-
-
-@cli.command()
-def version():
-    """Get the library version."""
-    click.echo(click.style(f"{__version__}", bold=True))
+    feed = Feed(url)
+    doc = feed.items.to(version)
+    doc.write(sys.stdout)
