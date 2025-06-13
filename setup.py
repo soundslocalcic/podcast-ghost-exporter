@@ -41,8 +41,14 @@ setup(
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     version=version,
     install_requires=[
-        # Include dependencies here
-        "click>=7.0,<8"
+        "beautifulsoup4>=4,<5",
+        "bleach>=6,<7",
+        "click>=7.0,<8",
+        "feedparser>=6,<7",
+        "python-dateutil>=2,<3",
+        "python-slugify>=8,<9",
+        "PyTZ",
+        "requests>=2,<3"
     ],
     entry_points="""
     [console_scripts]
