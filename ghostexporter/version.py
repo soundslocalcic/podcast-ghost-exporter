@@ -5,4 +5,4 @@ This module contains project version information.
 .. moduleauthor:: Mark Steadman <mark@soundslocal.co.uk>
 """
 
-__version__ = "0.1.1"  #: the working version
+__version__ = "0.2.0"  #: the working version
