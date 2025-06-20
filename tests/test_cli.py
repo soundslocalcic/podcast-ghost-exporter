@@ -36,7 +36,7 @@ class MockResponse(object):
         """Initialise the mock response."""
         pass
 
-    def raise_for_response(self):
+    def raise_for_status(self):
         """Raise an error corresponding to the HTTP response code."""
         pass
 

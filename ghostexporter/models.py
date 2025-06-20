@@ -44,7 +44,7 @@ class ItemList(object):
     def get_feed(self):
         """Return a feedparser feed object."""
         response = requests.get(self.__url)
-        response.raise_for_response()
+        response.raise_for_status()
         return parse_feed(response.content)
 
     def all(self):
