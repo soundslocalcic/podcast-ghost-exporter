@@ -1,0 +1,16 @@
+{
+    "headers": {
+        "Date": "Fri, 20 Jun 2025 14:31:47 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Connection": "keep-alive",
+        "Server": "nginx",
+        "Location": "https://media.transistor.fm/c8e44781/759cc575.mp3",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff"
+    },
+    "status_code": 302,
+    "body": "",
+    "url": "https://pdcn.co/e/media.transistor.fm/c8e44781/759cc575.mp3",
+    "method": "HEAD"
+}

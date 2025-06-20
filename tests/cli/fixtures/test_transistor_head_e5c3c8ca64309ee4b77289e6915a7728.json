@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "Date": "Fri, 20 Jun 2025 14:32:04 GMT",
+        "Connection": "keep-alive",
+        "Cf-Ray": "952bf93479ce4887-LHR",
+        "Location": "https://pdcn.co/e/media.transistor.fm/12e87fa3/6eeb7e3c.mp3",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private, no-cache",
+        "Report-To": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=uwB0yCJUN1fqxeW4oqtBbPn3thYDh2ro0war6V2lLxsvriU%2FzT9ToseK2HuKNFle2XRZM9YnfdB8di14Dt5we3yz%2BbpnSSM6NcEmNPeg217HDMZ8NxeEzLYy\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+        "Nel": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+        "Vary": "Accept-Encoding",
+        "Server": "cloudflare",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "server-timing": "cfL4;desc=\"?proto=TCP&rtt=27711&min_rtt=27358&rtt_var=8310&sent=4&recv=7&lost=0&retrans=0&sent_bytes=2337&recv_bytes=808&delivery_rate=100148&cwnd=243&unsent_bytes=0&cid=f22887ca7ff01f58&ts=91&x=0\""
+    },
+    "status_code": 302,
+    "body": "",
+    "url": "https://op3.dev/e/pdcn.co/e/media.transistor.fm/12e87fa3/6eeb7e3c.mp3",
+    "method": "HEAD"
+}

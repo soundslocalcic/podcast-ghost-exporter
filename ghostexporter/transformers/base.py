@@ -52,6 +52,10 @@ class TransformerBase(object):
         """Create a document that contains an individual item."""
         raise NotImplementedError  # pragma: no cover
 
+    def build_content(self, item):
+        """Return the HTML for the post."""
+        raise NotImplementedError  # pragma: no cover
+
 
 class GhostEncoder(json.JSONEncoder):
     """JSON encoder for streaming feed items and handling dates."""

@@ -6,12 +6,23 @@ Contains the v5 Ghost data transformer.
 """
 
 from datetime import datetime
+from ghostexporter.playback import embeds
 from .base import JSONTransformer
 import json
 
 
 class Ghost5Transformer(JSONTransformer):
     """v5 Ghost data transformer."""
+
+    def build_content(self, item):
+        """Return the HTML for the post."""
+        html = []
+
+        if iframe := embeds.get_html(item.enclosure):
+            html.append(iframe)
+
+        html.append(item.description)
+        return "\n\n".join(html)
 
     def transform_items(self, item_hook: callable):
         """Create a Ghost document with metadata and item list."""
@@ -37,7 +48,7 @@ class Ghost5Transformer(JSONTransformer):
                 "children": [
                     {
                         "type": "html",
-                        "html": item.description,
+                        "html": self.build_content(item),
                         "version": 1
                     }
                 ],
@@ -54,7 +65,7 @@ class Ghost5Transformer(JSONTransformer):
                     "id": item.id,
                     "slug": item.slug,
                     "title": item.title,
-                    "html": item.description,
+                    "html": self.build_content(item),
                     "lexical": json.dumps(lexical),
                     "type": "post",
                     "status": "published",
