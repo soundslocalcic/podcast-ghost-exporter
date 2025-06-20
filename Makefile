@@ -44,3 +44,6 @@ clean:
 	rm -rf docs/build \
 	rm -rf *.egg-info
 	coverage erase
+
+ghostenv:
+	@cd testenv && docker-compose up
