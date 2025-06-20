@@ -13,6 +13,7 @@ from hashlib import md5
 from pickle import dumps
 from slugify import slugify
 from urllib.parse import quote
+from . import settings
 from .transformers import get_transformer
 import bleach
 import requests
@@ -43,7 +44,13 @@ class ItemList(object):
 
     def get_feed(self):
         """Return a feedparser feed object."""
-        response = requests.get(self.__url)
+        response = requests.get(
+            self.__url,
+            headers={
+                "User-Agent": settings.USER_AGENT
+            }
+        )
+
         response.raise_for_status()
         return parse_feed(response.content)
 
