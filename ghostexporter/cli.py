@@ -16,6 +16,7 @@ It can be used as a handy facility for running the task from a command line.
 .. moduleauthor:: Mark Steadman <mark@soundslocal.co.uk>
 """
 
+from . import hooks, playback
 from .models import Feed
 import click
 import logging
@@ -56,6 +57,7 @@ def cli(url: str, version: str = DEFAULT_VERSION, verbose: int = 0):
             )
         )
 
+    hooks.emit("ready")
     feed = Feed(url)
     doc = feed.items.to(version)
     doc.write(sys.stdout)
