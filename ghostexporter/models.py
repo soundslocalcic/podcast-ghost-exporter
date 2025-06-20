@@ -67,6 +67,11 @@ class ItemList(object):
                 if author := entry.get("author_detail"):
                     kwargs["author"] = author
 
+                for link in entry.get("links", []):
+                    if link.get("rel") == "enclosure":
+                        kwargs["enclosure"] = link["href"]
+                        break
+
                 item = Item(**kwargs)
                 items.append(item)
 
@@ -117,6 +122,7 @@ class Item(object):
             self.published = kwargs.pop("published")
             description = kwargs.pop("description", "")
             self.author = kwargs.pop("author", {})
+            self.enclosure = kwargs.pop("enclosure")
         except KeyError as ex:
             raise TypeError("%s is required." % ex.args)
 

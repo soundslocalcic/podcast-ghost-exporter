@@ -54,5 +54,5 @@ def test_valid_url():
     ), "Incorrect verison number."
 
     assert (
-        db["data"]["posts"][0]["id"] == "61aad99f07d4984d490d5c85bc55dd0c"
+        db["data"]["posts"][0]["id"] == "34b4141d2ec76c1b0e26557ceedf5ceb"
     ), "Incorrect item ID."
