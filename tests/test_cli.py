@@ -28,7 +28,7 @@ def test_no_url():
     ), "URL argument must be enforced."
 
 
-@mock_http("cli", "test_transistors")
+@mock_http("cli", "test_transistor")
 def test_transistor():
     """
     Run CLI command with a valid feed URL.
@@ -39,7 +39,7 @@ def test_transistor():
     runner: CliRunner = CliRunner()
     result: Result = runner.invoke(
         cli.cli,
-        ["https://feeds.transistor.fm/listenvy"]
+        ["https://feeds.transistor.fm/undo"]
     )
 
     try:
@@ -54,35 +54,5 @@ def test_transistor():
     ), "Incorrect verison number."
 
     assert (
-        db["data"]["posts"][0]["id"] == "34b4141d2ec76c1b0e26557ceedf5ceb"
+        db["data"]["posts"][0]["id"] == "1e42894556c3ab3218d475253b1e9845"
     ), "Incorrect item ID."
-
-
-# @mock_http("cli", "test_buzzsprout")
-# def test_buzzsprout():
-#     """
-#     Run CLI command with a valid feed URL.
-#
-#     Arrange/Act: Run the CLI subcommand with a URL parameter.
-#     Assert: The output is a valid Ghost JSON document.
-#     """
-#     runner: CliRunner = CliRunner()
-#     result: Result = runner.invoke(
-#         cli.cli,
-#         ["https://feeds.buzzsprout.com/156239.rss"]
-#     )
-#
-#     try:
-#         doc = json.loads(result.output.strip())
-#     except Exception:
-#         raise result.exception
-#
-#     db = doc["db"][0]
-#
-#     assert (
-#         db["meta"]["version"] == "5.125.0-0-g09f7924d"
-#     ), "Incorrect verison number."
-#
-#     assert (
-#         db["data"]["posts"][0]["id"] == "34b4141d2ec76c1b0e26557ceedf5ceb"
-#     ), "Incorrect item ID."
